@@ -1,16 +1,12 @@
+Forked from node-modbus by Cloud-Automation (https://github.com/Cloud-Automation/node-modbus)
+
 A simple an easy to use Modbus TCP client/server implementation.
-
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-Modbus [![Build Status](https://travis-ci.org/Cloud-Automation/node-modbus.png)](https://travis-ci.org/Cloud-Automation/node-modbus)
-========
 
 Modbus is a simple Modbus TCP/RTU Client/Server with a simple API. It supports modbus function codes 1 - 6 and 15 and 16.
 
-Installation
-------------
+This fork serves to extend the support to additional (proprietary) function codes
 
-Just type `npm install jsmodbus` and you are ready to go.
+
 
 Testing
 -------
