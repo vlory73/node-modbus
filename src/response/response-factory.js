@@ -5,6 +5,7 @@ const ReadCoilsResponseBody = require('./read-coils.js')
 const ReadDiscreteInputsBody = require('./read-discrete-inputs.js')
 const ReadHoldingRegistersBody = require('./read-holding-registers.js')
 const ReadInputRegistersBody = require('./read-input-registers.js')
+const ReadTextRegistersBody = require('./read-text-registers.js')
 const WriteSingleCoilBody = require('./write-single-coil.js')
 const WriteSingleRegisterBody = require('./write-single-register.js')
 const WriteMultipleCoilsBody = require('./write-multiple-coils.js')
@@ -43,6 +44,11 @@ class ResponseFactory {
       /* Read Input Registers Response */
       if (fc === 0x04) {
         return ReadInputRegistersBody.fromBuffer(buffer)
+      }
+	  
+	        /* Read Input Registers Response */
+      if (fc === 0x41) {
+        return ReadTextRegistersBody.fromBuffer(buffer)
       }
 
       /* Write Single Coil Response */

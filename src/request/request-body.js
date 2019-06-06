@@ -50,6 +50,12 @@ class ModbusRequestBody {
         const WriteMultipleRegistersResponse = require('./write-multiple-registers.js')
         return WriteMultipleRegistersResponse.fromBuffer(buffer)
       }
+	  // start texts support here - VLO
+	  if (fc === 0x41) {
+        const ReadTextRegistersRequest = require('./read-text-registers.js')
+        return ReadTextRegistersRequest.fromBuffer(buffer)
+      }
+	  
 
       if (fc <= 0x2B) {
         debug('Illegal Function (fc %d)', fc)

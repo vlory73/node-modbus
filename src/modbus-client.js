@@ -4,10 +4,12 @@ const ReadCoilsRequestBody = require('./request/read-coils.js')
 const ReadDiscreteInputsRequestBody = require('./request/read-discrete-inputs.js')
 const ReadHoldingRegistersRequestBody = require('./request/read-holding-registers.js')
 const ReadInputRegistersRequestBody = require('./request/read-input-registers.js')
+const ReadTextRegistersRequestBody = require('./request/read-text-registers.js')
 const WriteSingleCoilRequestBody = require('./request/write-single-coil.js')
 const WriteSingleRegisterRequestBody = require('./request/write-single-register.js')
 const WriteMultipleCoilsRequestBody = require('./request/write-multiple-coils.js')
 const WriteMultipleRegistersRequestBody = require('./request/write-multiple-registers.js')
+
 
 /** Common Modbus Client
  * @abstract
@@ -146,6 +148,32 @@ class ModbusClient {
 
     return this._requestHandler.register(request)
   }
+  
+    /** Execute ReadInputRegisters Request (Function Code 0x04)
+   * @param {Number} start Start Address.
+   * @param {Number} count Coil Quantity.
+   * @returns {Promise}
+   * @example
+   * client.readInputRegisters(0, 10).then(function (res) {
+   *   console.log(res.response, res.request)
+   * }).catch(function (err) {
+   *   ...
+   * })
+   */
+  readTextRegisters (start, count) {
+    debug('issuing new read input registers request')
+
+    let request
+    try {
+      request = new ReadTextRegistersRequestBody(start, count)
+    } catch (e) {
+      return Promise.reject(e)
+    }
+
+    return this._requestHandler.register(request)
+  }
+  
+  
 
   /** Execute WriteSingleCoil Request (Function Code 0x05)
    * @param {Number} address Address.
